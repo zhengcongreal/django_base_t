@@ -5,5 +5,6 @@ urlpatterns = [
     path('querystring/',views.QSParamterView.as_view()),
     path('formdataparamter/',views.FormDataParamterView.as_view()),
     path('json/',views.JasonParamterView.as_view()),
+    path('urlparamter/<int:age>',views.URLParam1View.as_view()),
 
 ]

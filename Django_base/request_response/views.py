@@ -42,3 +42,15 @@ class JasonParamterView(View):
         # age=json_dict.get('age')
         # return http.HttpResponse('接收到非表单请求体数据:%s--%d'%(name,age))
         return  http.HttpResponse("假装有数据！")
+
+
+# 3. URL路径参数：提取URL路径中的特定部分数据
+
+class URLParam1View(View):
+    """测试path()提取普通路径参数
+       http://127.0.0.1:8000/url_param1/18/
+       """
+    def get(self,request,age):
+        return  http.HttpResponse('年龄：%d'%age)
+    # def get(self,request,path):
+    #     return  http.HttpResponse('年龄：%s'%path)
