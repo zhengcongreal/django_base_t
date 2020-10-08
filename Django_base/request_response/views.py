@@ -54,3 +54,20 @@ class URLParam1View(View):
         return  http.HttpResponse('年龄：%d'%age)
     # def get(self,request,path):
     #     return  http.HttpResponse('年龄：%s'%path)
+
+class URLParam2View(View):
+    """测试path()中自定义路由转换器提取路径参数：手机号
+    http://127.0.0.1:8000/url_param2/18500001111/
+    """
+    def get(self,request,phone_num):
+        return  http.HttpResponse('手机号：%s'%phone_num)
+    # def get(self,request,path):
+    #     return  http.HttpR
+class URLParam3View(View):
+    """测试path()中自定义路由转换器提取路径参数：手机号
+    http://127.0.0.1:8000/url_param3/18500001111/
+    """
+    def get(self,request,phone_num):
+        return  http.HttpResponse('手机号：%s'%phone_num)
+    # def get(self,request,path):
+    #     return  http.HttpR
