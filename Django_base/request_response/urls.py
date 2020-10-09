@@ -10,6 +10,7 @@ urlpatterns = [
     re_path(r'^urlparamter3/(?P<phone_num>1[3-9]\d{9})/$',views.URLParam3View.as_view()),
     path('headparamter/',views.HeadersParamView.as_view()),
     path('jsonresponse/',views.JsonResponseView.as_view()),
-
+    path('index/', views.IndexView.as_view(), name='index'),
+    path('redirect_index/', views.LoginRedictView.as_view())
 
 ]
