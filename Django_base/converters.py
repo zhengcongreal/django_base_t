@@ -5,3 +5,10 @@ class MobilePhoneConverter:
     def to_url(self, value):
         return str(value)
 
+class EmailConverter:
+    regex='[0-9a-zA-Z_]{3,19}@(qq|163|126)\.com'
+    def to_python(self,value):
+        return value
+
+    def to_url(self, value):
+        return str(value)

@@ -8,6 +8,8 @@ urlpatterns = [
     path('urlparamter/<int:age>',views.URLParam1View.as_view()),
     path('urlparamter2/<mobilephone:phone_num>',views.URLParam2View.as_view()),
     re_path(r'^urlparamter3/(?P<phone_num>1[3-9]\d{9})/$',views.URLParam3View.as_view()),
+    path('headparamter/',views.HeadersParamView.as_view()),
+    path('jsonresponse/',views.JsonResponseView.as_view()),
 
 
 ]

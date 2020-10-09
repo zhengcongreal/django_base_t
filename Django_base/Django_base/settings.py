@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users', # 用户模块子应用
     'request_response',
+    'request_response_test'
 ]
 
 MIDDLEWARE = [

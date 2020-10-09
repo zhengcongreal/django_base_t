@@ -61,13 +61,33 @@ class URLParam2View(View):
     """
     def get(self,request,phone_num):
         return  http.HttpResponse('手机号：%s'%phone_num)
-    # def get(self,request,path):
-    #     return  http.HttpR
+
 class URLParam3View(View):
     """测试path()中自定义路由转换器提取路径参数：手机号
     http://127.0.0.1:8000/url_param3/18500001111/
     """
     def get(self,request,phone_num):
         return  http.HttpResponse('手机号：%s'%phone_num)
-    # def get(self,request,path):
-    #     return  http.HttpR
+
+
+class HeadersParamView(View):
+    """测试提取请求头参数"""
+
+    def get(self, request):
+        # 获取请求头中文件的类型
+        ret = request.META.get('CONTENT_LENGTH')
+        return http.HttpResponse(ret)
+
+
+class JsonResponseView(View):
+    def get(self,request):
+
+        dict_data={
+            'city':'wuhan',
+            'subject':'python'
+        }
+        # 将python字典自动转成json数据，相当于json.dumps
+        return http.JsonResponse(dict_data)
+
+
+

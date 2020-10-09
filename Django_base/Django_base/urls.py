@@ -16,13 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 # 在总路由中，注册自定义路由转换器
-from converters import MobilePhoneConverter
+from converters import MobilePhoneConverter,EmailConverter
 from django.urls import register_converter
 register_converter(MobilePhoneConverter,"mobilephone")
-
+register_converter(EmailConverter,"email")
 urlpatterns = [
 
     path('admin/', admin.site.urls),
     path('',include('users.urls')),
-    path('',include('request_response.urls'))
+    path('',include('request_response.urls')),
+    path('',include('request_response_test.urls'))
 ]
