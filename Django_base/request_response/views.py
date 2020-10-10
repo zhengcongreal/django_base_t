@@ -106,3 +106,11 @@ class LoginRedictView(View):
     def get(self, request):
         ret_url = reverse('request_response:index')
         return redirect(ret_url)
+
+
+class ImageResponseView(View):
+    def get(self, request):
+        with open(r"D:\Program Files\code\django_base_t\Django_base\request_response\img\2.jpeg", 'rb') as file:
+            file_data = file.read()
+
+        return http.HttpResponse(file_data, content_type="image/jpeg")
