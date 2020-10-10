@@ -7,6 +7,9 @@ import json
 # Create your views here.
 # 、分别利用查询字符串、表单、json字符串传参的方式，
 # 由postman向后端传递姓名、年龄、邮箱三个参数并在控制台上打印。
+from request_response_test.models import StudentInfo
+
+
 class QSParamterView(View):
     def get(self, request):
         name = request.GET.get('name')
@@ -39,4 +42,9 @@ class JsonParamterView(View):
 class UrlParamterView(View):
     def get(self, request, name, age, email):
         print("姓名：%s 年龄：%s 邮箱: %s" % (name, age, email))
-        return http.HttpResponse("姓名：%s 年龄：%s 邮箱: %s" % (name, age, email))
+        index = StudentInfo.objects.create(sname=name, sage=age, semail=email)
+        if index:
+            return http.HttpResponseNotAllowed([])
+
+        else:
+            return http.HttpResponse("插入成功")

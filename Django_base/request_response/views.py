@@ -99,7 +99,6 @@ class IndexView(View):
 
     def get(self, request):
         print("正在处理视图")
-        print(request)
         return http.HttpResponse('假装这是个网站首页')
 
 
