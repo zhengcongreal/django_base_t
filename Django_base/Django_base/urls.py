@@ -23,7 +23,7 @@ register_converter(EmailConverter,"email")
 urlpatterns = [
 
     path('admin/', admin.site.urls),
-    path('',include('users.urls')),
+    path('', include('users.urls')),
     path('', include(('request_response.urls', 'request_response'), namespace='request_response')),
     path('', include('request_response_test.urls')),
     path('', include('booktest.urls')),
