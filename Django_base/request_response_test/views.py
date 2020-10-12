@@ -44,7 +44,9 @@ class UrlParamterView(View):
         print("姓名：%s 年龄：%s 邮箱: %s" % (name, age, email))
         index = StudentInfo.objects.create(sname=name, sage=age, semail=email)
         if index:
-            return http.HttpResponseNotAllowed([])
+            return http.HttpResponse("插入成功")
+
 
         else:
-            return http.HttpResponse("插入成功")
+
+            return http.HttpResponseNotAllowed([])
