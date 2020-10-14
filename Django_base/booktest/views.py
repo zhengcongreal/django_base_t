@@ -193,10 +193,52 @@ class HeroInfoCUIDView(View):
         # 查询图书阅读量大于30的所有英雄
         # hero=HeroInfo.objects.filter(hbook__bread__gt=30)
         # 对查询集可以再次调用过滤器进行过滤，如
-        book = BookInfo.objects.filter(bread__gt=30).order_by('bpub_date')
-        qs = BookInfo.objects.all()
-        print([i.id for i in qs])
-        print([i.id for i in qs])
-        print([i.id for i in qs])
-        print([i.id for i in qs])
-        return http.HttpResponse(book)
+        # book = BookInfo.objects.filter(bread__gt=30).order_by('bpub_date')
+        # qs = BookInfo.objects.all()
+        # print([i.id for i in qs])
+        # print([i.id for i in qs])
+        # print([i.id for i in qs])
+        # print([i.id for i in qs])
+        HeroInfo.objects.filter(id__exact=1).delete()
+
+        return http.HttpResponse("ok")
+
+
+class BookView(View):
+    def get(self, request):
+        books = BookInfo.objects.filter(is_delete=False)
+        context = {
+            'books': books
+
+        }
+        return render(request, 'books.html', context)
+
+
+class SetCookie(View):
+    def get(self, request):
+        response = http.HttpResponse("ok")
+        response.set_cookie('name', 'zhengcong', max_age=3600)
+        return response
+
+
+class GetCookie(View):
+    def get(self, request):
+        cookie = request.COOKIES.get('name')
+
+        return http.HttpResponse(cookie)
+
+
+class SetSession(View):
+    def get(self, request):
+        response = http.HttpResponse("ok")
+        request.session['name'] = 'zhengcong'
+
+        return response
+
+
+class GetSession(View):
+    def get(self, request):
+        # request.session.flush()
+        # 整条删除，包含键和值
+        session = request.session.get("name")
+        return http.HttpResponse(session)

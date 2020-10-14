@@ -114,3 +114,15 @@ class ImageResponseView(View):
             file_data = file.read()
 
         return http.HttpResponse(file_data, content_type="image/jpeg")
+
+
+class TempView(View):
+    def get(self, request):
+        # return http.HttpResponse("test")
+        context = {
+            'python': '24期',
+            'name': 'zhengcong'
+
+        }
+
+        return render(request, 'temp.html', context)

@@ -13,6 +13,7 @@ urlpatterns = [
     path('index/', views.IndexView.as_view(), name='index'),
     path('redirect_index/', views.LoginRedictView.as_view()),
     path('img/', views.ImageResponseView.as_view()),
+    path('temp/', views.TempView.as_view()),
 
 
 ]
